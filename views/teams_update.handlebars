@@ -1,0 +1,11 @@
+<h1>Update NBA Team - {{teams.team_name}}:</h1>
+<form action="/team" id="update-team" method="post">
+    Team Name: <input type="text" name="team_name" value="{{teams.team_name}}"><br>
+    Division: <select name="division" id="division-selector">
+        <option value="" disabled selected>Select Division</option>
+        {{#each selection}}
+            <option value="{{id}}">{{division_name}}</option>
+        {{/each}}
+    </select>
+</form>
+<button onclick="updateTeam({{teams.id}})">Update</button>

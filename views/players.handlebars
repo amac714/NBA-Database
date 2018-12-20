@@ -1,0 +1,42 @@
+<h1>NBA Players Listing</h1>
+<p>Displays all players in my NBA database.</p>
+<br>
+
+<h3>Add a Player</h3>
+<form action="/players" id="addplayer" method="post">
+    Name: <input type="text" name="player_fname" placeholder="First" required> <input type="text" name="player_lname" placeholder="Last"><br>
+    Age: <input type="number" name="age"><br>
+    Height: <input type="text" name="height" placeholder="6-4"><br>
+    Team:<select name="team_name" id="division-selector">
+        <option value="" disabled selected>Select team</option>
+        <option value="NULL">None</option>
+    {{#each selection}}
+        <option value="{{id}}">{{team_name}}</option>
+    {{/each}}
+
+    </select><br>
+    <input type="submit" value="Add Player">
+</form>
+<br>
+<table class="table-striped">
+    <thead>
+        <th>Players</th>
+        <th>Age</th>
+        <th>Height</th>
+        <th>Team</th>
+    </thead>
+    <tbody>
+    {{#each results}}
+        <tr>
+            <td>{{player_fname}} {{player_lname}}</td>
+            <td>{{age}}</td>
+            <td>{{height}}</td>
+            <td>{{team_name}}</td>
+            <td><a href="/players/{{id}}">Update</a></td>
+            <td><button onclick="deletePerson({{id}})">Delete</button></td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+<br>
+<a href="/">Return to Homepage</a>

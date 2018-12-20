@@ -1,0 +1,14 @@
+<h1>Update NBA Player - {{players.player_fname}} {{players.player_lname}}:</h1>
+<form action="/players" id="update-player" method="post">
+    Player Name: <input type="text" name="player_fname" value="{{players.player_fname}}"> <input type="text" name="player_lname" value="{{players.player_lname}}"><br>
+    Age: <input type="number" name="age" value="{{players.age}}"><br>
+    Height: <input type="text" name="height" placeholder="6-4" value="{{players.height}}"><br>
+    Team: <select name="team" id="team-selector" required>
+        <option value="" disabled selected>Select team</option>
+        <option value="NULL">None</option>
+    {{#each selection}}
+        <option value="{{id}}">{{team_name}}</option>
+    {{/each}}
+</select>
+</form>
+<button onclick="updatePlayer({{players.id}})">Update</button>

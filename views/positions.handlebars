@@ -1,0 +1,40 @@
+<h1>Positions and Players</h1>
+<p>A many-to-many relationship. Players can have many positions and positions can have many players.</p>
+
+
+<a href="/create_pos">View, Create, or Delete Positions</a>
+<br><br>
+
+<form action="/positions" id="addPosition" method="post">
+    Player Name: <select name="player" id="player-selector">
+    {{#each selection}}
+        <option value="{{id}}">{{player_fname}} {{player_lname}}</option>
+    {{/each}}
+    </select>
+
+    Position: <select name="position" id="position-selector">
+    {{#each display}}
+        <option value="{{id}}">{{position_name}}</option>
+    {{/each}} </select>
+    <input type="submit" value="Add Relationship">
+</form>
+
+<br>
+
+<table class="table-striped">
+    <thead>
+        <th>Positions</th>
+        <th>Player Name</th>
+    </thead>
+    <tbody>
+    {{#each results}}
+        <tr>
+            <td name="pname" value="{{position_id}}">{{position_name}}</td>
+            <td value="{{player_id}}">{{player_fname}} {{player_lname}}</td>
+            <td><button onclick="deletePosition({{player_id}}, {{position_id}})">Delete</button></td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+<br>
+<a href="/">Return to Homepage</a>

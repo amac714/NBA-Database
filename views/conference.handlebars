@@ -1,0 +1,42 @@
+<h1>Divisions and Conferences</h1>
+<p>Displays conf_div table of my NBA Database. conf_div is a many-to-many relationship.</p>
+<p>Divisions can be in many conferences and conferences can have many divisions. <br>
+    However, as a restriction, a unique division can only be in one conference (i.e either Western or Eastern)</p>
+
+<a href="/divisions">View, Create, or Delete a new Division</a>
+<br>
+<a href="/create_conf">View, Create, or Delete a new Conference</a>
+
+<br><br>
+
+<form action="/conference" id="addDivision" method="post">
+    Division: <select name="divisions" id="divisions-selector">
+    {{#each selection}}
+        <option value="{{id}}">{{division_name}}</option>
+    {{/each}}
+</select>
+
+    Conference: <select name="conference" id="conf-selector">
+    {{#each results}}
+        <option value="{{confID}}">{{confName}}</option>
+    {{/each}} </select>
+    <input type="submit" value="Add to conf_div">
+</form>
+<br>
+<table class="table-striped">
+    <thead>
+    <th>Division</th>
+    <th>Conference</th>
+    </thead>
+    <tbody>
+    {{#each display}}
+        <tr>
+            <td>{{division_name}}</td>
+            <td>{{confName}}</td>
+            <td><button onclick="deleteDivision({{confID}}, {{divID}})">Delete</button></td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+<br>
+<a href="/">Return to Homepage</a>

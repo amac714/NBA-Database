@@ -1,0 +1,17 @@
+body {
+    padding: 20px;
+}
+
+button:hover {
+    color: white;
+    background-color: steelblue;
+}
+
+input[type="submit"]:hover {
+    color: white;
+    background-color: steelblue;
+}
+
+td, th {
+    padding-left: 20px;
+}

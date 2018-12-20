@@ -1,0 +1,24 @@
+<h1>Create a Conference</h1>
+<p>Displays conference table and add or delete a conference </p>
+<br>
+<form action="/create_conf" id="addConf" method="post">
+    Conference Name: <input type="text" name="confName">
+    <input type="submit" value="Add Conference">
+</form>
+<br>
+<table class="table-striped">
+    <thead>
+    <th>Conference Name</th>
+    </thead>
+    <tbody>
+    {{#each results}}
+        <tr>
+            <td>{{confName}}</td>
+            <td><button onclick="deleteConf({{confID}})">Delete</button></td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+
+<br>
+<a href="/conference">Return to Conference - Division Relationship</a>

@@ -1,0 +1,35 @@
+<h1>NBA Team Database</h1>
+<!--<h4>Add a team:</h4>-->
+<p>Displays all the teams currently in my NBA database. <br>
+    A team can only be in one division, a division can have many teams.</p>
+
+<br>
+
+<form action="/team" id="addteam" method="post">
+    Team Name: <input type="text" name="team_name">
+    Division: <select name="division" id="division-selector">
+        <option value="" disabled selected>Select Division</option>
+    {{#each selection}}
+        <option value="{{id}}">{{division_name}}</option>
+    {{/each}} </select>
+    <input type="submit" value="Add Team">
+</form>
+<br>
+<table class="table-striped">
+    <thead>
+        <th>Teams</th>
+        <th>Division</th>
+    </thead>
+    <tbody>
+    {{#each results}}
+        <tr>
+            <td>{{team_name}}</td>
+            <td>{{division_name}}</td>
+            <td><a href="/team/{{id}}">Update</a></td>
+            <td><button onclick="deleteTeam({{id}})">Delete</button></td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+<br>
+<a href="/">Return to Homepage</a>

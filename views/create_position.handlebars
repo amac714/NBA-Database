@@ -1,0 +1,23 @@
+<h1>Create a new Position</h1>
+<p>Displays positions table and add or delete a position </p>
+<br>
+<form action="/create_pos" id="addPos" method="post">
+    Position Name: <input type="text" name="posName">
+    <input type="submit" value="Add Position">
+</form>
+<br>
+<table class="table-striped">
+    <thead>
+    <th>Position Name</th>
+    </thead>
+    <tbody>
+    {{#each results}}
+        <tr>
+            <td>{{position_name}}</td>
+            <td><button onclick="deletePos({{id}})">Delete</button></td>
+        </tr>
+    {{/each}}
+    </tbody>
+</table>
+<br>
+<a href="/positions">Return to Positions and Players</a>
